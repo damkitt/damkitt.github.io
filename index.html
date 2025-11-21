@@ -30,31 +30,8 @@
         }
 
         /* Typography */
-        h1, h2, h3, h4 { margin: 0; font-weight: 600; letter-spacing: -0.025em;}
-
-        /* --- ANIMATIONS --- */
+        h1, h2, h3, h4 { margin: 0; font-weight: 600; letter-spacing: -0.015em;}
         
-        .reveal {
-            opacity: 0;
-            transform: translateY(40px) scale(0.98);
-            transition: all 1.0s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0) scale(1);
-        }
-
-        .word-anim span {
-            opacity: 0;
-            display: inline-block;
-            transform: translateY(20px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
-        }
-        .word-anim.visible span {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
         /* Header */
         header {
             position: sticky;
@@ -78,29 +55,51 @@
             padding: 0 20px;
         }
 
+        /* --- ANIMATIONS --- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px) scale(0.98);
+            transition: all 1.0s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        /* Fixed Word Animation for Spaces */
+        .word-anim span {
+            opacity: 0;
+            display: inline-block;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .word-anim.visible span {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
         /* Hero Section */
         .hero {
             text-align: center;
             padding: 120px 0 80px;
         }
         .hero h2 { 
-            font-size: 76px; /* Big & Bold */
-            line-height: 1.05; 
+            font-size: 76px; 
+            line-height: 1.1; 
             margin-bottom: 24px; 
             letter-spacing: -0.03em;
         }
         .hero p { 
             font-size: 24px; line-height: 1.4; color: var(--text-secondary); 
-            max-width: 700px; margin: 0 auto 50px; font-weight: 400;
+            max-width: 750px; margin: 0 auto 50px; font-weight: 400;
             opacity: 0; animation: simpleFade 1s 0.5s forwards;
         }
-        
         .hero strong { color: var(--text-main); font-weight: 600; }
 
         @keyframes simpleFade { to { opacity: 1; } }
 
-        /* Video Container */
-        .video-wrapper {
+        /* Video Placeholder (Apple Style) */
+        .video-placeholder {
             position: relative;
             width: 100%;
             max-width: 800px;
@@ -109,14 +108,16 @@
             overflow: hidden;
             box-shadow: 0 20px 60px rgba(0,0,0,0.15);
             aspect-ratio: 16 / 9;
-            background: #000;
+            background: #1d1d1f; /* Dark background */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            flex-direction: column;
         }
         
-        .video-wrapper iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
+        .video-placeholder h4 { font-size: 24px; margin-bottom: 10px; opacity: 0.8; }
+        .video-placeholder p { font-size: 16px; opacity: 0.5; }
 
         /* Button */
         .btn {
@@ -130,12 +131,12 @@
             font-weight: 500;
             transition: transform 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
         }
-        .btn:hover { transform: scale(1.05); background-color: #111; }
+        .btn:hover { transform: scale(1.05); background-color: #333; }
 
         /* Intro Text Section */
         .intro-section {
             text-align: center;
-            max-width: 750px;
+            max-width: 800px;
             margin: 0 auto 50px;
             padding: 80px 20px;
         }
@@ -148,18 +149,15 @@
             padding: 40px 0;
             max-width: 100%;
         }
-
         .nav-btn {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            width: 44px;
-            height: 44px;
+            width: 44px; height: 44px;
             background: rgba(255,255,255,0.95);
             border-radius: 50%;
             box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-            cursor: pointer;
-            z-index: 10;
+            cursor: pointer; z-index: 10;
             display: flex; align-items: center; justify-content: center;
             font-size: 20px; color: #111; border: none;
             transition: transform 0.2s;
@@ -169,32 +167,20 @@
         .next { right: 10px; }
         @media(max-width: 768px) { 
             .nav-btn { display: none; } 
-            .hero h2 { font-size: 48px; }
+            .hero h2 { font-size: 42px; }
         }
 
         .scrolling-wrapper {
-            display: flex;
-            flex-wrap: nowrap;
-            overflow-x: auto;
-            gap: 24px;
-            padding: 20px 5px;
-            -webkit-overflow-scrolling: touch;
-            scroll-snap-type: x mandatory;
-            scroll-behavior: smooth;
+            display: flex; flex-wrap: nowrap; overflow-x: auto; gap: 24px; padding: 20px 5px;
+            -webkit-overflow-scrolling: touch; scroll-snap-type: x mandatory; scroll-behavior: smooth;
         }
         .scrolling-wrapper::-webkit-scrollbar { display: none; }
 
         .card {
-            flex: 0 0 auto;
-            width: 300px;
-            height: 460px;
-            background: var(--card-bg);
-            border-radius: 24px;
-            overflow: hidden;
-            scroll-snap-align: center;
-            position: relative;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.06);
-            transition: transform 0.4s ease;
+            flex: 0 0 auto; width: 300px; height: 460px;
+            background: var(--card-bg); border-radius: 24px; overflow: hidden;
+            scroll-snap-align: center; position: relative;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.06); transition: transform 0.4s ease;
         }
         .card:hover { transform: translateY(-5px); }
         .card img { width: 100%; height: 100%; object-fit: cover; }
@@ -207,11 +193,7 @@
 
         /* Info Grid */
         .info-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 80px;
-            padding: 120px 0;
-            align-items: center;
+            display: grid; grid-template-columns: 1fr 1fr; gap: 80px; padding: 120px 0; align-items: center;
         }
         .info-text h3 { font-size: 52px; margin-bottom: 20px; line-height: 1.05; }
         .info-text p { font-size: 21px; color: var(--text-secondary); line-height: 1.5; }
@@ -220,14 +202,10 @@
             background-size: cover; background-position: center;
             box-shadow: 0 20px 40px rgba(0,0,0,0.08);
         }
-
         @media (max-width: 768px) {
             .info-grid { grid-template-columns: 1fr; padding: 60px 0; gap: 40px; }
             .info-image { height: 300px; }
-            .video-wrapper { margin-bottom: 30px; }
         }
-        
-        .calendly-overlay { display: none; } 
 
     </style>
 </head>
@@ -242,64 +220,63 @@
         <section class="hero">
             <h2 class="word-anim">Visit like a local.</h2>
             
-            <p>Locora connects you with <strong>real advice from real people</strong>. <br>Get insights from locals and travelers who have actually been there.</p>
+            <p>Stop searching for hidden gems on forums. <br>Locora handles <strong>everything</strong> for you.</p>
             
-            <div class="video-wrapper reveal">
-                <iframe width="100%" height="100%" src="https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0&controls=0" title="Locora Pitch" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <div class="video-placeholder reveal">
+                <h4>Startup Pitch Video</h4>
+                <p>(Will be inserted here)</p>
             </div>
 
             <div class="reveal">
-                <a href="#calendly" class="btn" onclick="alert('Ссылка на Calendly будет здесь!')">Book a Demo</a>
+                <a href="#calendly" class="btn" onclick="alert('Ссылка на Calendly будет здесь!')">Book a Meeting</a>
             </div>
         </section>
 
         <section class="intro-section reveal">
-            <h3>No fake reviews. Just experience.</h3>
-            <p>We built Locora to kill the "tourist trap". We verify our contributors so you get honest recommendations from people who live in the city and travelers who just returned. It's the world's most authentic database.</p>
+            <h3>Stop planning. Start living.</h3>
+            <p>Locora solves your travel chaos. No more hours spent scrolling through forums. No more manually adding pins to a map to build a route. Whether it's a <strong>3-day business trip</strong> or a <strong>multi-month world tour</strong>, Locora gives you the perfect plan instantly.</p>
         </section>
 
         <section class="carousel-container reveal">
             <button class="nav-btn prev" onclick="scrollGallery(-320)">&#8249;</button>
-            
             <div class="scrolling-wrapper" id="gallery">
                 <div class="card">
-                    <img src="https://images.unsplash.com/photo-1516483638261-f4dbaf036963?auto=format&fit=crop&w=500&q=80" alt="Italy">
-                    <div class="card-text"><h4>Cinque Terre</h4><p>"Mario's cafe is a must."</p></div>
+                    <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=500&q=80" alt="Beach">
+                    <div class="card-text"><h4>Business Trip</h4><p>"3 days in Singapore organized instantly."</p></div>
                 </div>
                 <div class="card">
                     <img src="https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?auto=format&fit=crop&w=500&q=80" alt="Venice">
-                    <div class="card-text"><h4>Venice</h4><p>"Avoid the main square."</p></div>
+                    <div class="card-text"><h4>World Tour</h4><p>"My 6-month route is perfectly tracked."</p></div>
                 </div>
                 <div class="card">
                     <img src="https://images.unsplash.com/photo-1488085061387-422e29b40080?auto=format&fit=crop&w=500&q=80" alt="Kyoto">
-                    <div class="card-text"><h4>Kyoto</h4><p>"Found a silent temple."</p></div>
+                    <div class="card-text"><h4>Kyoto</h4><p>"Found the best ramen without forums."</p></div>
                 </div>
                 <div class="card">
-                    <img src="https://images.unsplash.com/photo-1501504905252-473c47e087f8?auto=format&fit=crop&w=500&q=80" alt="Seattle">
-                    <div class="card-text"><h4>Seattle</h4><p>"Best local market tips."</p></div>
+                    <img src="https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?auto=format&fit=crop&w=500&q=80" alt="London">
+                    <div class="card-text"><h4>London</h4><p>"Locora mapped my whole weekend."</p></div>
                 </div>
-                 <div class="card">
+                <div class="card">
                     <img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=500&q=80" alt="Paris">
-                    <div class="card-text"><h4>Paris</h4><p>"Secret bakery list."</p></div>
+                    <div class="card-text"><h4>Paris</h4><p>"Saved me hours of research."</p></div>
                 </div>
             </div>
-            
             <button class="nav-btn next" onclick="scrollGallery(320)">&#8250;</button>
         </section>
 
         <section class="info-grid">
             <div class="info-text reveal">
-                <h3 class="word-anim">Real People.<br>Real Advice.</h3>
-                <p>Stop trusting anonymous 5-star reviews. Locora highlights tips from verified locals and experienced travelers. Whether it's a hidden jazz bar in New Orleans or a safe coworking space in Bali, you'll know it's legit.</p>
+                <h3 class="word-anim">Smart Routing.<br>Zero Effort.</h3>
+                <p>Forget about manually plotting points on Google Maps. Locora automatically builds the most logical and exciting route for you based on your time and interests. Spend your time exploring, not navigating.</p>
             </div>
-            <div class="info-image reveal" style="background-image: url('https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=800&q=80');"></div>
+            <div class="info-image reveal" style="background-image: url('https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=800&q=80');"></div>
         </section>
 
         <section class="info-grid">
             <div class="info-image reveal" style="background-image: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80');"></div>
             <div class="info-text reveal">
-                <h3 class="word-anim">Your Journey.<br>Visualized.</h3>
-                <p>Locora isn't just a guide; it's your travel diary. Visualize your history, see how much of the world you've covered, and unlock achievements as you explore new cultures.</p>
+                <h3 class="word-anim">Your Travel<br>Statistics.</h3>
+                <p>Visualize your entire travel life. See your progress across the globe, unlock achievements for new countries, and keep a beautiful history of everywhere you've been.</p>
             </div>
         </section>
 
@@ -333,25 +310,28 @@
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
         document.querySelectorAll('.info-text').forEach(el => observer.observe(el));
 
-        // 3. Split Headlines
+        // 3. FIX FOR SPACES in Headline Animation
         document.querySelectorAll('.word-anim').forEach(headline => {
             const text = headline.innerText;
             headline.innerHTML = ''; 
-             const words = text.split(/\s+/); 
-             words.forEach((word, index) => {
-                if(word) {
-                    const span = document.createElement('span');
-                    span.innerText = word + ' ';
-                    span.style.transitionDelay = (index * 0.1) + 's';
-                    headline.appendChild(span);
-                }
+            const words = text.split(' '); // Split by space
+            
+            words.forEach((word, index) => {
+                // 1. Create the span for the word
+                const span = document.createElement('span');
+                span.innerText = word;
+                span.style.transitionDelay = (index * 0.1) + 's';
+                headline.appendChild(span);
+                
+                // 2. Add a manual space AFTER the word so they don't stick together
+                headline.appendChild(document.createTextNode(' ')); 
             });
         });
         
+        // Trigger first animation
         setTimeout(() => {
             document.querySelector('.hero h2').classList.add('visible');
         }, 500);
-
     </script>
 
 </body>
