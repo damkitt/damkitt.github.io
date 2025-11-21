@@ -108,16 +108,15 @@
             overflow: hidden;
             box-shadow: 0 20px 60px rgba(0,0,0,0.15);
             aspect-ratio: 16 / 9;
-            background: #1d1d1f; /* Dark background */
+            background: #1d1d1f;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
             flex-direction: column;
         }
-        
-        .video-placeholder h4 { font-size: 24px; margin-bottom: 10px; opacity: 0.8; }
-        .video-placeholder p { font-size: 16px; opacity: 0.5; }
+        .video-placeholder h4 { font-size: 24px; margin-bottom: 10px; opacity: 0.9; }
+        .video-placeholder p { font-size: 16px; opacity: 0.6; }
 
         /* Button */
         .btn {
@@ -191,20 +190,53 @@
         .card-text h4 { font-size: 24px; margin-bottom: 6px; }
         .card-text p { font-size: 15px; opacity: 0.95; margin: 0; }
 
-        /* Info Grid */
+        /* --- REDESIGNED INFO GRID (BLOCKS) --- */
         .info-grid {
-            display: grid; grid-template-columns: 1fr 1fr; gap: 80px; padding: 120px 0; align-items: center;
+            display: grid; 
+            grid-template-columns: 1fr 1fr; 
+            gap: 100px; /* More space between content */
+            padding: 140px 0; 
+            align-items: center;
+            text-align: left; /* Force Left Align */
         }
-        .info-text h3 { font-size: 52px; margin-bottom: 20px; line-height: 1.05; }
-        .info-text p { font-size: 21px; color: var(--text-secondary); line-height: 1.5; }
+        
+        .info-text {
+            padding-right: 20px;
+        }
+
+        .info-text h3 { 
+            font-size: 48px; 
+            margin-bottom: 24px; 
+            line-height: 1.05;
+            letter-spacing: -0.02em;
+        }
+        
+        .info-text p { 
+            font-size: 20px; 
+            color: var(--text-secondary); 
+            line-height: 1.6; 
+            font-weight: 400;
+        }
+        
         .info-image {
-            background: #eee; height: 540px; border-radius: 30px;
-            background-size: cover; background-position: center;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+            background: #eee; 
+            height: 500px; 
+            border-radius: 30px;
+            background-size: cover; 
+            background-position: center;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15); /* Soft premium shadow */
         }
+
+        /* Mobile adjustments */
         @media (max-width: 768px) {
-            .info-grid { grid-template-columns: 1fr; padding: 60px 0; gap: 40px; }
-            .info-image { height: 300px; }
+            .info-grid { 
+                grid-template-columns: 1fr; 
+                padding: 60px 0; 
+                gap: 40px; 
+                text-align: left; 
+            }
+            .info-image { height: 350px; order: -1; /* Image first on mobile usually looks better, or remove this to keep text first */ }
+            .info-text { padding-right: 0; }
         }
 
     </style>
@@ -219,12 +251,11 @@
         
         <section class="hero">
             <h2 class="word-anim">Visit like a local.</h2>
-            
             <p>Stop searching for hidden gems on forums. <br>Locora handles <strong>everything</strong> for you.</p>
             
             <div class="video-placeholder reveal">
                 <h4>Startup Pitch Video</h4>
-                <p>(Will be inserted here)</p>
+                <p>(Video will be inserted here)</p>
             </div>
 
             <div class="reveal">
@@ -241,24 +272,20 @@
             <button class="nav-btn prev" onclick="scrollGallery(-320)">&#8249;</button>
             <div class="scrolling-wrapper" id="gallery">
                 <div class="card">
-                    <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=500&q=80" alt="Beach">
-                    <div class="card-text"><h4>Business Trip</h4><p>"3 days in Singapore organized instantly."</p></div>
+                    <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=500&q=80" alt="Trip">
+                    <div class="card-text"><h4>Business Trip</h4><p>"3 days in Singapore sorted."</p></div>
                 </div>
                 <div class="card">
-                    <img src="https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?auto=format&fit=crop&w=500&q=80" alt="Venice">
-                    <div class="card-text"><h4>World Tour</h4><p>"My 6-month route is perfectly tracked."</p></div>
+                    <img src="https://images.unsplash.com/photo-1501504905252-473c47e087f8?auto=format&fit=crop&w=500&q=80" alt="Coffee">
+                    <div class="card-text"><h4>Seattle</h4><p>"Best coworking spots."</p></div>
                 </div>
                 <div class="card">
                     <img src="https://images.unsplash.com/photo-1488085061387-422e29b40080?auto=format&fit=crop&w=500&q=80" alt="Kyoto">
-                    <div class="card-text"><h4>Kyoto</h4><p>"Found the best ramen without forums."</p></div>
+                    <div class="card-text"><h4>Kyoto</h4><p>"Hidden ramen gems."</p></div>
                 </div>
-                <div class="card">
-                    <img src="https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?auto=format&fit=crop&w=500&q=80" alt="London">
-                    <div class="card-text"><h4>London</h4><p>"Locora mapped my whole weekend."</p></div>
-                </div>
-                <div class="card">
-                    <img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=500&q=80" alt="Paris">
-                    <div class="card-text"><h4>Paris</h4><p>"Saved me hours of research."</p></div>
+                 <div class="card">
+                    <img src="https://images.unsplash.com/photo-1533929736472-594e45db429c?auto=format&fit=crop&w=500&q=80" alt="NYC">
+                    <div class="card-text"><h4>New York</h4><p>"Navigated like a local."</p></div>
                 </div>
             </div>
             <button class="nav-btn next" onclick="scrollGallery(320)">&#8250;</button>
@@ -269,14 +296,14 @@
                 <h3 class="word-anim">Smart Routing.<br>Zero Effort.</h3>
                 <p>Forget about manually plotting points on Google Maps. Locora automatically builds the most logical and exciting route for you based on your time and interests. Spend your time exploring, not navigating.</p>
             </div>
-            <div class="info-image reveal" style="background-image: url('https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=800&q=80');"></div>
+            <div class="info-image reveal" style="background-image: url('https://images.unsplash.com/photo-1555412654-72a95a495858?auto=format&fit=crop&w=800&q=80');"></div>
         </section>
 
         <section class="info-grid">
-            <div class="info-image reveal" style="background-image: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80');"></div>
+            <div class="info-image reveal" style="background-image: url('https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=800&q=80');"></div>
             <div class="info-text reveal">
                 <h3 class="word-anim">Your Travel<br>Statistics.</h3>
-                <p>Visualize your entire travel life. See your progress across the globe, unlock achievements for new countries, and keep a beautiful history of everywhere you've been.</p>
+                <p>Visualize your entire travel life. See your progress across the globe, unlock achievements for new countries, and keep a beautiful history of everywhere you've been. Your passport, digitized.</p>
             </div>
         </section>
 
@@ -289,12 +316,12 @@
     </footer>
 
     <script>
-        // 1. Gallery Scroll
+        // Gallery Scroll
         function scrollGallery(distance) {
             document.getElementById('gallery').scrollBy({ left: distance, behavior: 'smooth' });
         }
 
-        // 2. Observer for Scroll Animations
+        // Scroll Animations
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -310,25 +337,20 @@
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
         document.querySelectorAll('.info-text').forEach(el => observer.observe(el));
 
-        // 3. FIX FOR SPACES in Headline Animation
+        // Word Split with Spaces Fix
         document.querySelectorAll('.word-anim').forEach(headline => {
             const text = headline.innerText;
             headline.innerHTML = ''; 
-            const words = text.split(' '); // Split by space
-            
+            const words = text.split(' ');
             words.forEach((word, index) => {
-                // 1. Create the span for the word
                 const span = document.createElement('span');
                 span.innerText = word;
                 span.style.transitionDelay = (index * 0.1) + 's';
                 headline.appendChild(span);
-                
-                // 2. Add a manual space AFTER the word so they don't stick together
                 headline.appendChild(document.createTextNode(' ')); 
             });
         });
         
-        // Trigger first animation
         setTimeout(() => {
             document.querySelector('.hero h2').classList.add('visible');
         }, 500);
