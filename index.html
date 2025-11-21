@@ -66,7 +66,6 @@
             transform: translateY(0) scale(1);
         }
 
-        /* Fixed Word Animation */
         .word-anim span {
             opacity: 0;
             display: inline-block;
@@ -190,23 +189,22 @@
         .card-text h4 { font-size: 24px; margin-bottom: 6px; }
         .card-text p { font-size: 15px; opacity: 0.95; margin: 0; }
 
-        /* --- REPAIRED INFO GRID --- */
+        /* --- FIXED INFO GRID --- */
         .info-grid {
             display: grid; 
             grid-template-columns: 1fr 1fr; 
             gap: 80px; 
             padding: 140px 0; 
-            align-items: center; /* Vertically center content */
+            align-items: center;
         }
         
         .info-text {
-            text-align: left; /* Strictly Left Align */
-            padding: 0; /* Remove accidental padding */
+            text-align: left; /* FORCE LEFT ALIGN */
         }
 
         .info-text h3 { 
             font-size: 48px; 
-            margin-bottom: 20px; 
+            margin-bottom: 10px; /* Tighter spacing */
             line-height: 1.1;
             letter-spacing: -0.02em;
         }
@@ -216,6 +214,7 @@
             color: var(--text-secondary); 
             line-height: 1.5; 
             font-weight: 400;
+            margin-top: 20px;
         }
         
         .info-image {
@@ -227,14 +226,12 @@
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
         }
 
-        /* Mobile adjustments */
         @media (max-width: 768px) {
             .info-grid { 
                 grid-template-columns: 1fr; 
                 padding: 60px 0; 
                 gap: 40px; 
             }
-            /* Make sure images are above text on mobile for flow */
             .info-grid.reversed .info-image { order: -1; }
             .info-image { height: 350px; }
         }
@@ -293,7 +290,8 @@
 
         <section class="info-grid reversed">
             <div class="info-text reveal">
-                <h3 class="word-anim">Effortless Navigation.</h3>
+                <h3 class="word-anim" style="margin-bottom: 0;">Effortless</h3>
+                <h3 class="word-anim">Navigation.</h3>
                 <p>Forget about manually plotting points on Google Maps. Locora automatically builds the most logical route for you. Spend your time exploring, not staring at a screen.</p>
             </div>
             <div class="info-image reveal" style="background-image: url('https://images.unsplash.com/photo-1642425149556-b6f90e946859?auto=format&fit=crop&w=800&q=80');"></div>
@@ -302,7 +300,8 @@
         <section class="info-grid">
             <div class="info-image reveal" style="background-image: url('https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?auto=format&fit=crop&w=800&q=80');"></div>
             <div class="info-text reveal">
-                <h3 class="word-anim">Your Journey.<br>Digitized.</h3>
+                <h3 class="word-anim" style="margin-bottom: 0;">Your Journey.</h3>
+                <h3 class="word-anim">Digitized.</h3>
                 <p>Visualize your entire travel life. See your progress across the globe, unlock achievements for new countries, and keep a beautiful history of everywhere you've been.</p>
             </div>
         </section>
@@ -327,8 +326,8 @@
                 if (entry.isIntersecting) {
                     entry.target.classList.add('active');
                     if (entry.target.classList.contains('word-anim') || entry.target.querySelector('.word-anim')) {
-                        const wordBlock = entry.target.classList.contains('word-anim') ? entry.target : entry.target.querySelector('.word-anim');
-                        wordBlock.classList.add('visible');
+                        const wordBlocks = entry.target.classList.contains('word-anim') ? [entry.target] : entry.target.querySelectorAll('.word-anim');
+                        wordBlocks.forEach(block => block.classList.add('visible'));
                     }
                 }
             });
