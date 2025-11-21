@@ -66,7 +66,7 @@
             transform: translateY(0) scale(1);
         }
 
-        /* Fixed Word Animation for Spaces */
+        /* Fixed Word Animation */
         .word-anim span {
             opacity: 0;
             display: inline-block;
@@ -98,7 +98,7 @@
 
         @keyframes simpleFade { to { opacity: 1; } }
 
-        /* Video Placeholder (Apple Style) */
+        /* Video Placeholder */
         .video-placeholder {
             position: relative;
             width: 100%;
@@ -190,31 +190,31 @@
         .card-text h4 { font-size: 24px; margin-bottom: 6px; }
         .card-text p { font-size: 15px; opacity: 0.95; margin: 0; }
 
-        /* --- REDESIGNED INFO GRID (BLOCKS) --- */
+        /* --- REPAIRED INFO GRID --- */
         .info-grid {
             display: grid; 
             grid-template-columns: 1fr 1fr; 
-            gap: 100px; /* More space between content */
+            gap: 80px; 
             padding: 140px 0; 
-            align-items: center;
-            text-align: left; /* Force Left Align */
+            align-items: center; /* Vertically center content */
         }
         
         .info-text {
-            padding-right: 20px;
+            text-align: left; /* Strictly Left Align */
+            padding: 0; /* Remove accidental padding */
         }
 
         .info-text h3 { 
             font-size: 48px; 
-            margin-bottom: 24px; 
-            line-height: 1.05;
+            margin-bottom: 20px; 
+            line-height: 1.1;
             letter-spacing: -0.02em;
         }
         
         .info-text p { 
             font-size: 20px; 
             color: var(--text-secondary); 
-            line-height: 1.6; 
+            line-height: 1.5; 
             font-weight: 400;
         }
         
@@ -224,7 +224,7 @@
             border-radius: 30px;
             background-size: cover; 
             background-position: center;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15); /* Soft premium shadow */
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
         }
 
         /* Mobile adjustments */
@@ -233,10 +233,10 @@
                 grid-template-columns: 1fr; 
                 padding: 60px 0; 
                 gap: 40px; 
-                text-align: left; 
             }
-            .info-image { height: 350px; order: -1; /* Image first on mobile usually looks better, or remove this to keep text first */ }
-            .info-text { padding-right: 0; }
+            /* Make sure images are above text on mobile for flow */
+            .info-grid.reversed .info-image { order: -1; }
+            .info-image { height: 350px; }
         }
 
     </style>
@@ -291,19 +291,19 @@
             <button class="nav-btn next" onclick="scrollGallery(320)">&#8250;</button>
         </section>
 
-        <section class="info-grid">
+        <section class="info-grid reversed">
             <div class="info-text reveal">
-                <h3 class="word-anim">Smart Routing.<br>Zero Effort.</h3>
-                <p>Forget about manually plotting points on Google Maps. Locora automatically builds the most logical and exciting route for you based on your time and interests. Spend your time exploring, not navigating.</p>
+                <h3 class="word-anim">Effortless Navigation.</h3>
+                <p>Forget about manually plotting points on Google Maps. Locora automatically builds the most logical route for you. Spend your time exploring, not staring at a screen.</p>
             </div>
-            <div class="info-image reveal" style="background-image: url('https://images.unsplash.com/photo-1555412654-72a95a495858?auto=format&fit=crop&w=800&q=80');"></div>
+            <div class="info-image reveal" style="background-image: url('https://images.unsplash.com/photo-1642425149556-b6f90e946859?auto=format&fit=crop&w=800&q=80');"></div>
         </section>
 
         <section class="info-grid">
-            <div class="info-image reveal" style="background-image: url('https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=800&q=80');"></div>
+            <div class="info-image reveal" style="background-image: url('https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?auto=format&fit=crop&w=800&q=80');"></div>
             <div class="info-text reveal">
-                <h3 class="word-anim">Your Travel<br>Statistics.</h3>
-                <p>Visualize your entire travel life. See your progress across the globe, unlock achievements for new countries, and keep a beautiful history of everywhere you've been. Your passport, digitized.</p>
+                <h3 class="word-anim">Your Journey.<br>Digitized.</h3>
+                <p>Visualize your entire travel life. See your progress across the globe, unlock achievements for new countries, and keep a beautiful history of everywhere you've been.</p>
             </div>
         </section>
 
@@ -337,7 +337,7 @@
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
         document.querySelectorAll('.info-text').forEach(el => observer.observe(el));
 
-        // Word Split with Spaces Fix
+        // Word Split Fix
         document.querySelectorAll('.word-anim').forEach(headline => {
             const text = headline.innerText;
             headline.innerHTML = ''; 
