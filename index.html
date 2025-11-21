@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Locora - Master Your Journey</title>
+    <title>Locora - Visit Like a Local</title>
     <style>
         /* --- Apple-style Design System --- */
         :root {
@@ -22,7 +22,7 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             background-color: var(--bg-color);
             color: var(--text-main);
             line-height: 1.47;
@@ -30,22 +30,20 @@
         }
 
         /* Typography */
-        h1, h2, h3, h4 { margin: 0; font-weight: 600; letter-spacing: -0.02em;}
+        h1, h2, h3, h4 { margin: 0; font-weight: 600; letter-spacing: -0.025em;}
 
         /* --- ANIMATIONS --- */
         
-        /* 1. Scroll Reveal (Opacity + Scale + Up) */
         .reveal {
             opacity: 0;
-            transform: translateY(50px) scale(0.95);
-            transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1); /* Apple-like ease */
+            transform: translateY(40px) scale(0.98);
+            transition: all 1.0s cubic-bezier(0.16, 1, 0.3, 1);
         }
         .reveal.active {
             opacity: 1;
             transform: translateY(0) scale(1);
         }
 
-        /* 2. Word-by-word Animation classes */
         .word-anim span {
             opacity: 0;
             display: inline-block;
@@ -70,7 +68,6 @@
             justify-content: center;
             border-bottom: 1px solid rgba(0,0,0,0.05);
             z-index: 1000;
-            transition: all 0.3s ease;
         }
         header h1 { font-size: 18px; color: var(--accent-black); }
 
@@ -84,19 +81,21 @@
         /* Hero Section */
         .hero {
             text-align: center;
-            padding: 100px 0 80px;
+            padding: 120px 0 80px;
         }
         .hero h2 { 
-            font-size: 64px; 
+            font-size: 76px; /* Big & Bold */
             line-height: 1.05; 
-            margin-bottom: 15px; 
-            display: inline-block; /* Keeps words together */
+            margin-bottom: 24px; 
+            letter-spacing: -0.03em;
         }
         .hero p { 
-            font-size: 24px; line-height: 1.3; color: var(--text-secondary); 
-            max-width: 600px; margin: 0 auto 40px; font-weight: 400;
+            font-size: 24px; line-height: 1.4; color: var(--text-secondary); 
+            max-width: 700px; margin: 0 auto 50px; font-weight: 400;
             opacity: 0; animation: simpleFade 1s 0.5s forwards;
         }
+        
+        .hero strong { color: var(--text-main); font-weight: 600; }
 
         @keyframes simpleFade { to { opacity: 1; } }
 
@@ -105,8 +104,8 @@
             position: relative;
             width: 100%;
             max-width: 800px;
-            margin: 0 auto 40px; /* Space below video */
-            border-radius: 20px;
+            margin: 0 auto 40px;
+            border-radius: 24px;
             overflow: hidden;
             box-shadow: 0 20px 60px rgba(0,0,0,0.15);
             aspect-ratio: 16 / 9;
@@ -124,10 +123,10 @@
             display: inline-block;
             background-color: var(--accent-black);
             color: white;
-            padding: 16px 32px;
+            padding: 18px 36px;
             border-radius: 40px;
             text-decoration: none;
-            font-size: 19px;
+            font-size: 20px;
             font-weight: 500;
             transition: transform 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
         }
@@ -136,11 +135,11 @@
         /* Intro Text Section */
         .intro-section {
             text-align: center;
-            max-width: 800px;
+            max-width: 750px;
             margin: 0 auto 50px;
             padding: 80px 20px;
         }
-        .intro-section h3 { font-size: 40px; margin-bottom: 20px; }
+        .intro-section h3 { font-size: 44px; margin-bottom: 20px; }
         .intro-section p { font-size: 21px; color: var(--text-secondary); }
 
         /* Carousel Section */
@@ -168,7 +167,10 @@
         .nav-btn:hover { transform: translateY(-50%) scale(1.1); }
         .prev { left: 10px; }
         .next { right: 10px; }
-        @media(max-width: 768px) { .nav-btn { display: none; } }
+        @media(max-width: 768px) { 
+            .nav-btn { display: none; } 
+            .hero h2 { font-size: 48px; }
+        }
 
         .scrolling-wrapper {
             display: flex;
@@ -211,23 +213,21 @@
             padding: 120px 0;
             align-items: center;
         }
-        .info-text h3 { font-size: 48px; margin-bottom: 20px; line-height: 1.1; }
-        .info-text p { font-size: 20px; color: var(--text-secondary); line-height: 1.5; }
+        .info-text h3 { font-size: 52px; margin-bottom: 20px; line-height: 1.05; }
+        .info-text p { font-size: 21px; color: var(--text-secondary); line-height: 1.5; }
         .info-image {
-            background: #eee; height: 500px; border-radius: 30px;
+            background: #eee; height: 540px; border-radius: 30px;
             background-size: cover; background-position: center;
             box-shadow: 0 20px 40px rgba(0,0,0,0.08);
         }
 
         @media (max-width: 768px) {
-            .hero h2 { font-size: 42px; }
             .info-grid { grid-template-columns: 1fr; padding: 60px 0; gap: 40px; }
             .info-image { height: 300px; }
             .video-wrapper { margin-bottom: 30px; }
         }
         
-        /* Calendly Widget styling (hidden until clicked usually, but here simple) */
-        .calendly-wrapper { text-align: center; padding: 40px; }
+        .calendly-overlay { display: none; } 
 
     </style>
 </head>
@@ -240,21 +240,22 @@
     <div class="container">
         
         <section class="hero">
-            <h2 class="word-anim">Your world. Unlocked.</h2>
-            <p>Locora is the ultimate companion for the modern nomad. <br>Arrive, explore, and track your journey.</p>
+            <h2 class="word-anim">Visit like a local.</h2>
+            
+            <p>Locora connects you with <strong>real advice from real people</strong>. <br>Get insights from locals and travelers who have actually been there.</p>
             
             <div class="video-wrapper reveal">
-                <iframe width="100%" height="100%" src="https://www.youtube.com/embed/VIDEO_ID_HERE?rel=0&controls=0" title="Locora Pitch" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe width="100%" height="100%" src="https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0&controls=0" title="Locora Pitch" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
 
             <div class="reveal">
-                <a href="#calendly" class="btn" onclick="alert('Сюда поставим Calendly на след шаге!')">Book a Demo</a>
+                <a href="#calendly" class="btn" onclick="alert('Ссылка на Calendly будет здесь!')">Book a Demo</a>
             </div>
         </section>
 
         <section class="intro-section reveal">
-            <h3>Travel smarter, not harder.</h3>
-            <p>We built Locora because we were tired of outdated travel guides. Locora unifies the world's largest city database with your personal travel history. It's simple, beautiful, and essential.</p>
+            <h3>No fake reviews. Just experience.</h3>
+            <p>We built Locora to kill the "tourist trap". We verify our contributors so you get honest recommendations from people who live in the city and travelers who just returned. It's the world's most authentic database.</p>
         </section>
 
         <section class="carousel-container reveal">
@@ -263,23 +264,23 @@
             <div class="scrolling-wrapper" id="gallery">
                 <div class="card">
                     <img src="https://images.unsplash.com/photo-1516483638261-f4dbaf036963?auto=format&fit=crop&w=500&q=80" alt="Italy">
-                    <div class="card-text"><h4>Cinque Terre</h4><p>"Found the hidden gems."</p></div>
+                    <div class="card-text"><h4>Cinque Terre</h4><p>"Mario's cafe is a must."</p></div>
                 </div>
                 <div class="card">
                     <img src="https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?auto=format&fit=crop&w=500&q=80" alt="Venice">
-                    <div class="card-text"><h4>Venice</h4><p>"Tracked every canal trip."</p></div>
+                    <div class="card-text"><h4>Venice</h4><p>"Avoid the main square."</p></div>
                 </div>
                 <div class="card">
                     <img src="https://images.unsplash.com/photo-1488085061387-422e29b40080?auto=format&fit=crop&w=500&q=80" alt="Kyoto">
-                    <div class="card-text"><h4>Kyoto</h4><p>"Locora works offline."</p></div>
+                    <div class="card-text"><h4>Kyoto</h4><p>"Found a silent temple."</p></div>
                 </div>
                 <div class="card">
                     <img src="https://images.unsplash.com/photo-1501504905252-473c47e087f8?auto=format&fit=crop&w=500&q=80" alt="Seattle">
-                    <div class="card-text"><h4>Seattle</h4><p>"Best coffee guide."</p></div>
+                    <div class="card-text"><h4>Seattle</h4><p>"Best local market tips."</p></div>
                 </div>
                  <div class="card">
                     <img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=500&q=80" alt="Paris">
-                    <div class="card-text"><h4>Paris</h4><p>"Lived like a local."</p></div>
+                    <div class="card-text"><h4>Paris</h4><p>"Secret bakery list."</p></div>
                 </div>
             </div>
             
@@ -288,24 +289,26 @@
 
         <section class="info-grid">
             <div class="info-text reveal">
-                <h3 class="word-anim">Massive Database.</h3>
-                <p>Stop searching through endless forums. Locora aggregates data from thousands of cities worldwide. We provide instant recommendations for food, coworking, and adventure.</p>
+                <h3 class="word-anim">Real People.<br>Real Advice.</h3>
+                <p>Stop trusting anonymous 5-star reviews. Locora highlights tips from verified locals and experienced travelers. Whether it's a hidden jazz bar in New Orleans or a safe coworking space in Bali, you'll know it's legit.</p>
             </div>
-            <div class="info-image reveal" style="background-image: url('https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=800&q=80');"></div>
+            <div class="info-image reveal" style="background-image: url('https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=800&q=80');"></div>
         </section>
 
         <section class="info-grid">
             <div class="info-image reveal" style="background-image: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80');"></div>
             <div class="info-text reveal">
-                <h3 class="word-anim">Track Your Legacy.</h3>
-                <p>Your travels are your story. Locora visualizes your history, shows you how much of the world you've covered, and helps you unlock achievements.</p>
+                <h3 class="word-anim">Your Journey.<br>Visualized.</h3>
+                <p>Locora isn't just a guide; it's your travel diary. Visualize your history, see how much of the world you've covered, and unlock achievements as you explore new cultures.</p>
             </div>
         </section>
 
-        <div style="height: 100px;"></div> </div>
+        <div style="height: 100px;"></div>
+
+    </div>
 
     <footer style="text-align: center; padding: 40px; color: #888; font-size: 12px; border-top: 1px solid #eee;">
-        &copy; 2024 Locora Inc. Designed for the world.
+        &copy; 2024 Locora Inc. Designed for Travelers.
     </footer>
 
     <script>
@@ -314,39 +317,37 @@
             document.getElementById('gallery').scrollBy({ left: distance, behavior: 'smooth' });
         }
 
-        // 2. Observer for Scroll Animations (Opacity & Scale)
+        // 2. Observer for Scroll Animations
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('active');
-                    
-                    // If it's a word animation block, trigger that too
                     if (entry.target.classList.contains('word-anim') || entry.target.querySelector('.word-anim')) {
                         const wordBlock = entry.target.classList.contains('word-anim') ? entry.target : entry.target.querySelector('.word-anim');
                         wordBlock.classList.add('visible');
                     }
                 }
             });
-        }, { threshold: 0.15 }); // Trigger when 15% of item is visible
+        }, { threshold: 0.15 });
 
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-        document.querySelectorAll('.info-text').forEach(el => observer.observe(el)); // Also observe text blocks
+        document.querySelectorAll('.info-text').forEach(el => observer.observe(el));
 
-        // 3. Split Headlines into Words for Animation
+        // 3. Split Headlines
         document.querySelectorAll('.word-anim').forEach(headline => {
             const text = headline.innerText;
-            headline.innerHTML = ''; // Clear text
-            const words = text.split(' ');
-            
-            words.forEach((word, index) => {
-                const span = document.createElement('span');
-                span.innerText = word + ' ';
-                span.style.transitionDelay = (index * 0.1) + 's'; // Delay each word
-                headline.appendChild(span);
+            headline.innerHTML = ''; 
+             const words = text.split(/\s+/); 
+             words.forEach((word, index) => {
+                if(word) {
+                    const span = document.createElement('span');
+                    span.innerText = word + ' ';
+                    span.style.transitionDelay = (index * 0.1) + 's';
+                    headline.appendChild(span);
+                }
             });
         });
         
-        // Trigger the first headline manually just in case
         setTimeout(() => {
             document.querySelector('.hero h2').classList.add('visible');
         }, 500);
